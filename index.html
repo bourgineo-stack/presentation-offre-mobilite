@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoDifferent — Mobilité Durable</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --emerald: #10b981;
+      --orange: #f59e0b;
+      --purple: #8b5cf6;
+      --rose: #f472b6;
+      --cream: #faf7f2;
+      --text: #1a2744;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Fond texturé subtil */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Header avec phrase choc */
+    .hero {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--emerald);
+      margin-bottom: 30px;
+    }
+
+    .phrase-choc {
+      position: relative;
+      padding: 30px 40px;
+      background: var(--navy);
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+
+    .phrase-choc::before {
+      content: '❌';
+      position: absolute;
+      top: -15px;
+      left: 30px;
+      font-size: 1.8rem;
+    }
+
+    .phrase-originale {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      color: white;
+      line-height: 1.4;
+    }
+
+    .phrase-originale .highlight {
+      background: linear-gradient(180deg, transparent 50%, rgba(239, 68, 68, 0.4) 50%);
+      padding: 0 4px;
+    }
+
+    .transformation {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .transform-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .transform-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .transform-item .old {
+      color: #999;
+      text-decoration: line-through;
+    }
+
+    .transform-item .arrow {
+      color: var(--emerald);
+      font-weight: 700;
+    }
+
+    .transform-item .new {
+      color: var(--emerald);
+      font-weight: 600;
+    }
+
+    /* Section centrale - les deux offres */
+    .offres {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .offre {
+      background: white;
+      border-radius: 20px;
+      padding: 35px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .offre:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .offre::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+    }
+
+    .offre.mobilite::before {
+      background: linear-gradient(90deg, var(--emerald), var(--purple));
+    }
+
+    .offre.electrique::before {
+      background: linear-gradient(90deg, var(--orange), var(--rose));
+    }
+
+    .offre-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .offre.mobilite .offre-icon {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(139, 92, 246, 0.15));
+    }
+
+    .offre.electrique .offre-icon {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(244, 114, 182, 0.15));
+    }
+
+    .offre h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+
+    .offre .subtitle {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .probleme {
+      background: #fef2f2;
+      border-left: 3px solid #ef4444;
+      padding: 12px 15px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      color: #7f1d1d;
+    }
+
+    .solution {
+      background: #f0fdf4;
+      border-left: 3px solid var(--emerald);
+      padding: 12px 15px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      color: #166534;
+    }
+
+    .livrable {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .livrable-item {
+      background: var(--navy);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .statut {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 15px;
+      background: linear-gradient(135deg, #faf5ff, #f0f9ff);
+      border-radius: 10px;
+      font-size: 0.85rem;
+    }
+
+    .statut-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+
+    /* Message central */
+    .message-central {
+      background: var(--navy);
+      color: white;
+      padding: 35px 45px;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .message-central::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .message-central p {
+      position: relative;
+      z-index: 1;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .message-central strong {
+      color: var(--emerald);
+    }
+
+    .message-central .emoji-big {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(26, 39, 68, 0.1);
+    }
+
+    .statut-global {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-80 {
+      background: linear-gradient(135deg, var(--emerald), var(--purple));
+      color: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .statut-text {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .contact {
+      text-align: right;
+    }
+
+    .contact-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--navy);
+    }
+
+    .contact-info {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      body {
+        padding: 20px;
+      }
+
+      .phrase-originale {
+        font-size: 1.3rem;
+      }
+
+      .offres {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .contact {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="hero">
+      <div class="logo">GoDifferent</div>
+      
+      <div class="phrase-choc">
+        <p class="phrase-originale">
+          « Mes collaborateurs viennent en <span class="highlight">voiture</span> 
+          <span class="highlight">thermique</span>, 
+          <span class="highlight">seuls</span>. »
+        </p>
+      </div>
+      
+      <div class="transformation">
+        <div class="transform-item">
+          <span class="old">voiture</span>
+          <span class="arrow">→</span>
+          <span class="new">vélo / train / pied</span>
+        </div>
+        <div class="transform-item">
+          <span class="old">thermique</span>
+          <span class="arrow">→</span>
+          <span class="new">électrique</span>
+        </div>
+        <div class="transform-item">
+          <span class="old">seuls</span>
+          <span class="arrow">→</span>
+          <span class="new">à 2 ou 3</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Les deux offres -->
+    <section class="offres">
+      
+      <!-- Offre Mobilité -->
+      <div class="offre mobilite">
+        <div class="offre-icon">🗺️</div>
+        <h2>Atelier GoDifferent</h2>
+        <p class="subtitle">Diagnostic participatif des trajets domicile-travail</p>
+        
+        <div class="section-label">Le problème</div>
+        <div class="probleme">
+          Questionnaire en ligne froid → 15% de réponses → rapport PDF que personne ne lit → rien ne change
+        </div>
+        
+        <div class="section-label">La solution</div>
+        <div class="solution">
+          Atelier gamifié en 5 phases : géolocalisation, rencontres, carte humaine, pelotes de laine. Les gens vivent l'expérience ensemble.
+        </div>
+        
+        <div class="section-label">Livrables</div>
+        <div class="livrable">
+          <span class="livrable-item">Plan de Mobilité (LOM)</span>
+          <span class="livrable-item">Binômes covoiturage</span>
+          <span class="livrable-item">Bilan CO₂</span>
+        </div>
+        
+        <div class="statut">
+          <span class="statut-dot"></span>
+          <span>Test janvier — Entreprise 1500 salariés</span>
+        </div>
+      </div>
+
+      <!-- Offre Électrique -->
+      <div class="offre electrique">
+        <div class="offre-icon">⚡</div>
+        <h2>Formation Mobilité Électrique</h2>
+        <p class="subtitle">Lever les freins au passage à l'électrique</p>
+        
+        <div class="section-label">Le problème</div>
+        <div class="probleme">
+          Freins psychologiques : autonomie, recharge, prix. Les collaborateurs n'osent pas franchir le pas.
+        </div>
+        
+        <div class="section-label">La solution</div>
+        <div class="solution">
+          Escape game pédagogique + formation pratique. 5 énigmes = 5 leçons clés. Apprentissage par l'expérience, pas par slides.
+        </div>
+        
+        <div class="section-label">Livrables</div>
+        <div class="livrable">
+          <span class="livrable-item">Collaborateurs débloqués</span>
+          <span class="livrable-item">Guide pratique VE</span>
+          <span class="livrable-item">Aide au choix</span>
+        </div>
+        
+        <div class="statut">
+          <span class="statut-dot"></span>
+          <span>En cours — CCI locale</span>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- Message central -->
+    <div class="message-central">
+      <span class="emoji-big">🔥</span>
+      <p>
+        La réglementation pousse : <strong>Plan de Mobilité obligatoire</strong>, fin du thermique en 2035.<br>
+        Mais la réglementation ne crée pas de dynamique.<br><br>
+        J'apporte <strong>la chaleur d'une animation collective</strong> pour transformer<br>
+        la contrainte en opportunité et la prise de conscience en passage à l'action.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="statut-global">
+        <span class="badge-80">80%</span>
+        <span class="statut-text">Offres consolidées — Phase de test avec partenaires locaux<br>
+        <em>Échange pour affiner selon vos besoins</em></span>
+      </div>
+      <div class="contact">
+        <div class="contact-name">Evier</div>
+        <div class="contact-info">contact@godifferent.fr</div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
