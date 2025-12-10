@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoltFace — L'ingénierie du Changement de Mobilité</title>
-    <!-- Utilisation de Font Awesome pour les icônes modernes -->
+    <title>VoltFace — Mobilité Durable en Entreprise</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --deep-blue: #0f172a; /* Slate 900 */
-            --navy: #1e3a5f; /* Blue 800 */
-            --teal: #0d9488; /* Teal 600 - Primary Action */
-            --teal-light: #14b8a6; /* Teal 500 */
-            --amber: #f59e0b; /* Amber 500 - Secondary Highlight */
-            --amber-light: #fbbf24; /* Amber 400 */
-            --cream: #f9fafb; /* White-ish background */
-            --gray-100: #f4f4f5; /* Zinc 100 */
-            --gray-600: #52525b; /* Zinc 600 */
+            --deep-blue: #0f172a;
+            --navy: #1e3a5f;
+            --teal: #0d9488;
+            --teal-light: #14b8a6;
+            --amber: #f59e0b;
+            --amber-light: #fbbf24;
+            --cream: #f9fafb;
+            --gray-100: #f4f4f5;
+            --gray-200: #e4e4e7;
+            --gray-600: #52525b;
             --white: #ffffff;
-            --danger: #ef4444; /* Red 500 */
-            --success: #10b981; /* Green 500 */
+            --danger: #ef4444;
+            --success: #10b981;
         }
 
         * {
@@ -42,14 +42,13 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Utility Classes */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* ========== HERO SECTION (HEADER) ========== */
+        /* ========== HERO SECTION ========== */
         .hero {
             min-height: 100vh;
             background: linear-gradient(165deg, var(--deep-blue) 0%, var(--navy) 50%, #1e4d5f 100%);
@@ -115,8 +114,8 @@
 
         .phrase-choc-text .strike {
             color: var(--danger);
+            text-decoration: line-through;
             text-decoration-thickness: 3px;
-            text-decoration-color: var(--danger);
         }
 
         .hero-headline {
@@ -127,16 +126,15 @@
             line-height: 1.1;
             letter-spacing: -0.04em;
             margin-bottom: 30px;
-            max-width: 1000px;
+            max-width: 900px;
         }
 
         .hero-headline .highlight {
             color: var(--teal-light);
-            text-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
         }
 
         .hero-subheadline {
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             color: rgba(255,255,255,0.8);
             max-width: 700px;
             margin-bottom: 60px;
@@ -230,6 +228,10 @@
             font-size: 1.2rem;
         }
 
+        .trust-item small {
+            opacity: 0.7;
+        }
+
         /* ========== SERVICES SECTION ========== */
         .services {
             padding: 120px 0;
@@ -298,23 +300,23 @@
             right: 0;
             height: 6px;
             background: linear-gradient(90deg, var(--teal), var(--teal-light));
-            opacity: 1;
-            transition: opacity 0.3s ease;
         }
-        
-        /* Logo for GoDifferent */
+
+        .service-card.electric::before {
+            background: linear-gradient(90deg, var(--amber), var(--amber-light));
+        }
+
         .service-logo {
             margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
         }
+
         .service-logo img {
-            max-width: 180px; /* Max width for rectangular logo */
-            height: auto;
+            height: 50px;
+            width: auto;
+            border-radius: 10px;
             object-fit: contain;
         }
-        
+
         .service-icon {
             width: 64px;
             height: 64px;
@@ -324,7 +326,6 @@
             justify-content: center;
             font-size: 1.8rem;
             margin-bottom: 25px;
-            font-weight: 700;
         }
 
         .service-card.mobility .service-icon {
@@ -332,17 +333,6 @@
             background: linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(20, 184, 166, 0.15));
         }
 
-        .service-card.mobility .service-logo {
-            /* Placeholder for rectangular logo */
-            background: rgba(13, 148, 136, 0.1);
-            padding: 8px 15px;
-            border-radius: 10px;
-            width: fit-content;
-        }
-
-        .service-card.electric::before {
-            background: linear-gradient(90deg, var(--amber), var(--amber-light));
-        }
         .service-card.electric .service-icon {
             color: var(--amber);
             background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.15));
@@ -363,10 +353,6 @@
             font-style: italic;
         }
 
-        .service-block {
-            margin-bottom: 25px;
-        }
-
         .service-block-label {
             font-size: 0.75rem;
             font-weight: 700;
@@ -378,25 +364,23 @@
         }
 
         .service-block.problem {
-            background: #fef2f2; /* Red 50 */
+            background: #fef2f2;
             border-left: 4px solid var(--danger);
             padding: 18px 25px;
             border-radius: 0 16px 16px 0;
             font-size: 0.95rem;
-            color: #991b1b; /* Red 800 */
+            color: #991b1b;
+            margin-bottom: 25px;
         }
 
         .service-block.solution {
-            background: #f0fdfa; /* Teal 50 */
+            background: #f0fdfa;
             border-left: 4px solid var(--teal);
             padding: 18px 25px;
             border-radius: 0 16px 16px 0;
             font-size: 0.95rem;
-            color: #042f2e; /* Teal 900 */
-        }
-        
-        .service-block strong {
-            font-weight: 600;
+            color: #042f2e;
+            margin-bottom: 25px;
         }
 
         .service-deliverables {
@@ -453,7 +437,7 @@
             color: var(--deep-blue);
         }
 
-        /* ========== VALUE PROP SECTION (The Why) ========== */
+        /* ========== VALUE PROP SECTION ========== */
         .value-prop {
             padding: 120px 0;
             background: var(--deep-blue);
@@ -464,7 +448,7 @@
         }
 
         .value-container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
@@ -474,12 +458,11 @@
             font-size: 4rem;
             margin-bottom: 30px;
             color: var(--amber-light);
-            text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
         }
 
         .value-title {
             font-family: 'Fraunces', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 4vw, 2.75rem);
             font-weight: 600;
             color: var(--white);
             line-height: 1.3;
@@ -491,20 +474,19 @@
         }
 
         .value-text {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: rgba(255,255,255,0.75);
             line-height: 1.9;
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto;
             font-weight: 300;
         }
-        
-        /* CTA Button */
+
         .cta-button {
             display: inline-block;
             background: linear-gradient(90deg, var(--teal), var(--teal-light));
             color: var(--white);
-            padding: 15px 35px;
+            padding: 16px 40px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 1.1rem;
@@ -513,13 +495,11 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 20px rgba(13, 148, 136, 0.4);
         }
-        
-        .cta-button:hover {
-            background: linear-gradient(90deg, var(--teal-light), var(--teal));
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(13, 148, 136, 0.6);
-        }
 
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(13, 148, 136, 0.5);
+        }
 
         /* ========== FOOTER ========== */
         .footer {
@@ -543,20 +523,19 @@
         .footer-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: var(--deep-blue);
+            gap: 10px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
             color: var(--white);
-            padding: 12px 22px;
+            padding: 12px 24px;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 1rem;
         }
 
         .footer-status {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--gray-600);
             line-height: 1.5;
-            max-width: 400px;
         }
 
         .footer-contact {
@@ -584,39 +563,44 @@
             text-decoration: none;
             transition: color 0.2s;
         }
-        
+
         .footer-email:hover {
             color: var(--teal);
         }
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
-             .services-grid {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         @media (max-width: 768px) {
-            .hero, .services, .value-prop, .footer {
-                padding-left: 20px;
-                padding-right: 20px;
+            .container {
+                padding: 0 20px;
             }
-            
+
             .phrase-choc {
-                padding: 25px 25px;
-                margin-bottom: 40px;
+                padding: 25px;
+            }
+
+            .phrase-choc-text {
+                font-size: 1.3rem;
             }
 
             .trust-bar {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 20px;
-                padding-top: 30px;
             }
 
             .trust-logos {
                 flex-wrap: wrap;
                 gap: 20px;
+            }
+
+            .service-card {
+                padding: 35px;
             }
 
             .footer-container {
@@ -638,56 +622,57 @@
 </head>
 <body>
 
-    <!-- HERO / PROPOSITION D'OUVERTURE -->
+    <!-- HERO -->
     <section class="hero">
         <div class="container">
-            
-            <!-- Logo VoltFace seul -->
+
             <img src="https://raw.githubusercontent.com/bourgineo-stack/presentation-offre-mobilite/ff385b3ac61fb02ad3bcd3234c3ec5f913aa17af/voltface.jpg" alt="Logo VoltFace" class="brand-logo">
 
             <div class="phrase-choc">
-                <div class="phrase-choc-label"><i class="fa-solid fa-cloud-bolt"></i> Le constat qui bloque l'action</div>
+                <div class="phrase-choc-label"><i class="fa-solid fa-bullseye"></i> La phrase qu'on veut faire disparaître</div>
                 <p class="phrase-choc-text">
-                    « Mon personnel vient encore en <span class="strike">voiture thermique</span>, <span class="strike">seul</span>, et ne voit pas d'alternative. »
+                    « Mes collaborateurs viennent en <span class="strike">voiture</span> <span class="strike">thermique</span>, <span class="strike">seuls</span>. »
                 </p>
             </div>
 
             <h1 class="hero-headline">
-                Accélérer la <span class="highlight">Décarbonation des Trajets</span> <br>par l'Engagement Collectif
+                De la sensibilisation<br>
+                au <span class="highlight">passage à l'action</span>
             </h1>
 
             <p class="hero-subheadline">
-                VoltFace ne propose pas un audit. Nous activons une ingénierie du changement pour transformer les contraintes (ZFE, LOM) en **leviers d'innovation sociale** et environnementale pour vos équipes.
+                Ateliers collectifs pour transformer la mobilité de vos équipes. 
+                Fini les questionnaires froids et les rapports que personne ne lit.
             </p>
 
             <div class="transformation-row">
                 <div class="transform-pill">
-                    <span class="old">Carbone</span>
+                    <span class="old">voiture</span>
                     <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                    <span class="new">Réduction CO₂</span>
+                    <span class="new">vélo, train, marche</span>
                 </div>
                 <div class="transform-pill">
-                    <span class="old">Friction</span>
+                    <span class="old">thermique</span>
                     <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                    <span class="new">Adhésion</span>
+                    <span class="new">électrique</span>
                 </div>
                 <div class="transform-pill">
-                    <span class="old">Audit</span>
+                    <span class="old">seul</span>
                     <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                    <span class="new">Action</span>
+                    <span class="new">à deux ou trois</span>
                 </div>
             </div>
 
             <div class="trust-bar">
-                <span class="trust-label">Nos références d'activation</span>
+                <span class="trust-label">Ils nous font confiance</span>
                 <div class="trust-logos">
                     <div class="trust-item">
                         <div class="icon"><i class="fa-solid fa-industry"></i></div>
-                        <span>Grand Compte Industriel<br><small style="opacity:0.7">1 500+ collaborateurs</small></span>
+                        <span>Groupe industriel<br><small>1 500 salariés</small></span>
                     </div>
                     <div class="trust-item">
                         <div class="icon"><i class="fa-solid fa-briefcase"></i></div>
-                        <span>Chambre de Commerce<br><small style="opacity:0.7">Partenaire formation VE</small></span>
+                        <span>CCI locale<br><small>Formation VE</small></span>
                     </div>
                 </div>
             </div>
@@ -695,77 +680,74 @@
         </div>
     </section>
 
-    <!-- SERVICES / NOS ATELIERS COHÉRENTS -->
+    <!-- SERVICES -->
     <section class="services">
         <div class="container">
-            
-            <span class="section-label">Nos interventions stratégiques</span>
-            <h2 class="section-title">Deux ateliers, un objectif : débloquer la transition concrètement</h2>
+
+            <span class="section-label">Nos interventions</span>
+            <h2 class="section-title">Deux leviers pour décarboner vos trajets</h2>
             <p class="section-subtitle">
-                Nous intervenons sur les deux leviers majeurs du Plan de Mobilité Employeur (PDME) : le changement modal (passer du seul à plusieurs) et l'électrification (passer du thermique à l'électrique).
+                La réglementation impose d'agir (Plan de Mobilité, ZFE, fin du thermique). 
+                Nous apportons la méthode pour que ça fonctionne vraiment.
             </p>
 
             <div class="services-grid">
-                
-                <!-- ATELIER 1: GO DIFFERENT - CHANGEMENT MODAL (Logo Rectangulaire) -->
+
+                <!-- GODIFFERENT -->
                 <div class="service-card mobility">
-                    <!-- Remplacement de l'icône par le logo rectangulaire GoDifferent -->
                     <div class="service-logo">
-                        <img src="https://placehold.co/180x50/0d9488/ffffff?text=GoDifferent" alt="Logo GoDifferent">
+                        <img src="https://raw.githubusercontent.com/bourgineo-stack/presentation-offre-mobilite/ff385b3ac61fb02ad3bcd3234c3ec5f913aa17af/logo1.jpg" alt="Logo GoDifferent">
                     </div>
-                    
-                    <h3 class="service-name">GoDifferent : Atelier PDME Actif</h3>
-                    <p class="service-tagline">Transformer la contrainte réglementaire en dynamique collective.</p>
-                    
-                    <div class="service-block-label">Défi Habituel</div>
+                    <h3 class="service-name">Atelier Plan de Mobilité</h3>
+                    <p class="service-tagline">Diagnostic participatif des trajets domicile-travail</p>
+
+                    <div class="service-block-label">Le problème</div>
                     <div class="service-block problem">
-                        Les questionnaires passifs génèrent un taux de réponse faible ($<15\%$) et un rapport théorique. Le PDME devient une **charge administrative** sans impact réel sur les habitudes de trajet.
+                        Questionnaire en ligne → 15% de réponses → rapport que personne ne lit → rien ne change.
                     </div>
-                    
-                    <div class="service-block-label">Notre Solution - L'Expérience</div>
+
+                    <div class="service-block-label">Notre approche</div>
                     <div class="service-block solution">
-                        Notre atelier **gamifié et géolocalisé** rassemble les collaborateurs pour co-construire des solutions. Nous utilisons la cartographie dynamique pour identifier les binômes de covoiturage et les **"champions"** de la mobilité douce en temps réel.
+                        Atelier gamifié : géolocalisation, rencontres entre voisins, cartographie dynamique. Co-construction des solutions avec ceux qui ont déjà trouvé des alternatives.
                     </div>
 
                     <div class="service-deliverables">
-                        <span class="deliverable-tag">Conformité LOM</span>
-                        <span class="deliverable-tag">Création de communautés (covoiturage, vélo)</span>
-                        <span class="deliverable-tag">Analyse et Bilan CO₂ détaillé</span>
-                        <span class="deliverable-tag">Plan d'action priorisé</span>
+                        <span class="deliverable-tag">Plan de Mobilité (LOM)</span>
+                        <span class="deliverable-tag">Binômes covoiturage</span>
+                        <span class="deliverable-tag">Bilan CO₂</span>
                     </div>
 
                     <div class="service-status">
                         <span class="status-dot"></span>
-                        <span class="status-text">Déploiement Pilote : **Grand Groupe Industriel (Janv. 2025)**</span>
+                        <span class="status-text">Pilote <strong>janvier 2025</strong> — 1 500 salariés</span>
                     </div>
                 </div>
 
-                <!-- ATELIER 2: FORMATION ÉLECTRIQUE - CHANGEMENT ÉNERGÉTIQUE -->
+                <!-- FORMATION VE -->
                 <div class="service-card electric">
                     <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
                     <h3 class="service-name">Formation Mobilité Électrique</h3>
-                    <p class="service-tagline">Délivrer une expérience engageante pour lever les doutes sur le VE.</p>
-                    
-                    <div class="service-block-label">Défi Habituel</div>
+                    <p class="service-tagline">Escape game pédagogique — Lever les freins au changement</p>
+
+                    <div class="service-block-label">Le problème</div>
                     <div class="service-block problem">
-                        Les **freins psychologiques** (autonomie, coût, recharge) sont plus forts que les avantages. Le changement s'arrête au niveau du doute personnel, malgré les incitations de l'entreprise.
+                        Freins psychologiques : autonomie, recharge, prix. Les collaborateurs n'osent pas franchir le pas.
                     </div>
-                    
-                    <div class="service-block-label">Notre Solution - L'Immersion</div>
+
+                    <div class="service-block-label">Notre approche</div>
                     <div class="service-block solution">
-                        Un **Escape Game pédagogique** de 5 énigmes. Les collaborateurs apprennent les fondamentaux du Véhicule Électrique (VE) par l'action et la résolution de défis, transformant l'anxiété en **confiance opérationnelle**.
+                        Escape game + formation pratique. 5 énigmes = 5 leçons clés. Apprentissage par l'expérience, pas par slides.
                     </div>
 
                     <div class="service-deliverables">
-                        <span class="deliverable-tag">Réduction des peurs irrationnelles</span>
-                        <span class="deliverable-tag">Maîtrise des écosystèmes de recharge</span>
-                        <span class="deliverable-tag">Guide d'aide à la décision VE</span>
-                        <span class="deliverable-tag">Taux d'adoption maximisé</span>
+                        <span class="deliverable-tag">Collaborateurs débloqués</span>
+                        <span class="deliverable-tag">Guide pratique VE</span>
+                        <span class="deliverable-tag">Aide au choix</span>
                     </div>
 
                     <div class="service-status">
                         <span class="status-dot"></span>
-                        <span class="status-text">Déjà en cours de déploiement : **Partenariat CCI**</span>
+                        <span class="status-text">En déploiement — <strong>CCI locale</strong></span>
                     </div>
                 </div>
 
@@ -773,20 +755,21 @@
         </div>
     </section>
 
-    <!-- VALUE PROP (POURQUOI VOLTFACE EST L'UNIQUE CHOIX) -->
+    <!-- VALUE PROP -->
     <section class="value-prop">
         <div class="container value-container">
-            <div class="value-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="value-icon"><i class="fa-solid fa-fire"></i></div>
             <h2 class="value-title">
-                Nous ne vendons pas des ateliers. Nous vous offrons l'ingénierie nécessaire pour <span class="accent">Créer un Avantage Compétitif Durable.</span>
+                La réglementation crée l'obligation.<br>
+                <span class="accent">L'expérience collective crée le mouvement.</span>
             </h2>
             <p class="value-text">
-                L'avenir n'appartient pas à ceux qui se contentent de cocher des cases. Il appartient à ceux qui mobilisent. En transformant la contrainte réglementaire en une **expérience d'équipe positive et engageante**, vous ne faites pas que réduire votre empreinte carbone.
+                Plan de Mobilité obligatoire. Fin du thermique en 2035. Les contraintes sont là.
                 <br><br>
-                Vous augmentez l'attractivité de votre marque employeur, vous créez du lien social fort entre vos équipes et vous générez une économie tangible. **Passez du devoir au mouvement.**
+                Mais une case cochée n'est pas une dynamique enclenchée. Nous transformons la contrainte réglementaire en opportunité de mobiliser vos équipes — et de faire bouger les lignes pour de vrai.
             </p>
-            
-            <a href="mailto:volt.face@outlook.fr" class="cta-button">Engageons la discussion stratégique</a>
+
+            <a href="mailto:volt.face@outlook.fr" class="cta-button">Échangeons sur vos besoins</a>
         </div>
     </section>
 
@@ -794,15 +777,12 @@
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-left">
-                <!-- Remplacement du statut "80%" par une affirmation forte -->
-                <span class="footer-badge"><i class="fa-solid fa-handshake"></i> Partenariat Action</span>
-                <span class="footer-status">
-                    Notre offre est flexible et s'adapte à l'ADN de votre organisation. Contactez-nous pour un diagnostic rapide de vos besoins.
-                </span>
+                <span class="footer-badge"><i class="fa-solid fa-flask"></i> Offres consolidées à 80%</span>
+                <span class="footer-status">Phase pilote avec partenaires locaux<br>Échangeons sur vos besoins</span>
             </div>
             <div class="footer-contact">
                 <div class="footer-name">Olivier Bourgine</div>
-                <div class="footer-company">Fondateur VoltFace</div>
+                <div class="footer-company">VoltFace</div>
                 <a href="mailto:volt.face@outlook.fr" class="footer-email">volt.face@outlook.fr</a>
             </div>
         </div>
