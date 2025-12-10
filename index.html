@@ -1,763 +1,812 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoltFace — Mobilité Durable en Entreprise</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --deep-blue: #0f172a;
-      --navy: #1e3a5f;
-      --teal: #0d9488;
-      --teal-light: #14b8a6;
-      --amber: #f59e0b;
-      --amber-light: #fbbf24;
-      --cream: #fafaf9;
-      --gray-100: #f5f5f4;
-      --gray-200: #e7e5e4;
-      --gray-400: #a8a29e;
-      --gray-600: #57534e;
-      --gray-800: #292524;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--gray-800);
-      line-height: 1.6;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ========== HERO SECTION ========== */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(165deg, var(--deep-blue) 0%, var(--navy) 50%, #1e4d5f 100%);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 60px 40px;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(ellipse 80% 50% at 20% 40%, rgba(13, 148, 136, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 1100px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 60px;
-    }
-
-    .brand-logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      object-fit: cover;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    .brand-separator {
-      width: 1px;
-      height: 40px;
-      background: rgba(255,255,255,0.2);
-    }
-
-    .phrase-choc {
-      background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 25px 35px;
-      margin-bottom: 50px;
-      max-width: 800px;
-    }
-
-    .phrase-choc-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--amber);
-      margin-bottom: 12px;
-    }
-
-    .phrase-choc-text {
-      font-family: 'Fraunces', serif;
-      font-size: 1.4rem;
-      font-style: italic;
-      color: var(--white);
-      line-height: 1.5;
-    }
-
-    .phrase-choc-text .strike {
-      color: #f87171;
-      /*text-decoration: line-through;*/
-      text-decoration-thickness: 2px;
-    }
-
-    .hero-headline {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 30px;
-      max-width: 900px;
-    }
-
-    .hero-headline .strike {
-      position: relative;
-      color: var(--gray-400);
-    }
-
-    .hero-headline .strike::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      height: 4px;
-      background: #ef4444;
-      transform: rotate(-2deg);
-    }
-
-    .hero-headline .highlight {
-      color: var(--teal-light);
-    }
-
-    .hero-subheadline {
-      font-size: 1.25rem;
-      color: rgba(255,255,255,0.7);
-      max-width: 600px;
-      margin-bottom: 50px;
-      line-height: 1.7;
-    }
-
-    .transformation-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 60px;
-    }
-
-    .transform-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 12px 20px;
-      border-radius: 100px;
-      font-size: 0.95rem;
-      color: var(--white);
-      transition: all 0.3s ease;
-    }
-
-    .transform-pill:hover {
-      background: rgba(255,255,255,0.12);
-      transform: translateY(-2px);
-    }
-
-    .transform-pill .old {
-      color: var(--gray-400);
-      text-decoration: line-through;
-    }
-
-    .transform-pill .arrow {
-      color: var(--amber);
-      font-weight: 700;
-    }
-
-    .transform-pill .new {
-      color: var(--teal-light);
-      font-weight: 600;
-    }
-
-    .trust-bar {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .trust-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.4);
-    }
-
-    .trust-logos {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .trust-item .icon {
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* ========== SERVICES SECTION ========== */
-    .services {
-      padding: 120px 40px;
-      background: var(--white);
-    }
-
-    .services-container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--teal);
-      background: rgba(13, 148, 136, 0.1);
-      padding: 8px 16px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 700;
-      color: var(--deep-blue);
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-      max-width: 700px;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--gray-600);
-      max-width: 600px;
-      margin-bottom: 60px;
-      line-height: 1.7;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-    }
-
-    .service-card {
-      background: var(--gray-100);
-      border-radius: 24px;
-      padding: 45px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--teal), var(--teal-light));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .service-card:hover::before {
-      opacity: 1;
-    }
-
-    .service-card.electric::before {
-      background: linear-gradient(90deg, var(--amber), var(--amber-light));
-    }
-
-    .service-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin-bottom: 25px;
-    }
-
-    .service-card.mobility .service-icon {
-      background: linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(20, 184, 166, 0.15));
-    }
-
-    .service-card.electric .service-icon {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.15));
-    }
-
-    .service-name {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--deep-blue);
-      margin-bottom: 8px;
-    }
-
-    .service-tagline {
-      font-size: 0.95rem;
-      color: var(--gray-600);
-      margin-bottom: 30px;
-    }
-
-    .service-block {
-      margin-bottom: 25px;
-    }
-
-    .service-block-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--gray-400);
-      margin-bottom: 10px;
-    }
-
-    .service-block.problem {
-      background: #fef2f2;
-      border-left: 3px solid #ef4444;
-      padding: 16px 20px;
-      border-radius: 0 12px 12px 0;
-      font-size: 0.9rem;
-      color: #991b1b;
-    }
-
-    .service-block.solution {
-      background: #f0fdfa;
-      border-left: 3px solid var(--teal);
-      padding: 16px 20px;
-      border-radius: 0 12px 12px 0;
-      font-size: 0.9rem;
-      color: #115e59;
-    }
-
-    .service-deliverables {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 25px;
-    }
-
-    .deliverable-tag {
-      background: var(--deep-blue);
-      color: var(--white);
-      padding: 8px 16px;
-      border-radius: 100px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .service-status {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 30px;
-      padding-top: 25px;
-      border-top: 1px solid var(--gray-200);
-    }
-
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--amber);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
-      50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
-    }
-
-    .status-text {
-      font-size: 0.85rem;
-      color: var(--gray-600);
-    }
-
-    .status-text strong {
-      color: var(--deep-blue);
-    }
-
-    /* ========== VALUE PROP SECTION ========== */
-    .value-prop {
-      padding: 100px 40px;
-      background: var(--deep-blue);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .value-prop::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(13, 148, 136, 0.2) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .value-container {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .value-icon {
-      font-size: 3rem;
-      margin-bottom: 30px;
-    }
-
-    .value-title {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.4;
-      margin-bottom: 25px;
-    }
-
-    .value-title .accent {
-      color: var(--teal-light);
-    }
-
-    .value-text {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.8;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    /* ========== FOOTER ========== */
-    .footer {
-      padding: 60px 40px;
-      background: var(--gray-100);
-    }
-
-    .footer-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-left {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .footer-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--teal), var(--teal-light));
-      color: var(--white);
-      padding: 10px 20px;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .footer-status {
-      font-size: 0.9rem;
-      color: var(--gray-600);
-      line-height: 1.5;
-    }
-
-    .footer-contact {
-      text-align: right;
-    }
-
-    .footer-name {
-      font-family: 'Fraunces', serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--deep-blue);
-      margin-bottom: 4px;
-    }
-
-    .footer-company {
-      font-size: 0.9rem;
-      color: var(--teal);
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-
-    .footer-email {
-      font-size: 0.9rem;
-      color: var(--gray-600);
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 900px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding: 40px 24px;
-      }
-
-      .services, .value-prop, .footer {
-        padding-left: 24px;
-        padding-right: 24px;
-      }
-
-      .trust-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-      }
-
-      .trust-logos {
-        flex-wrap: wrap;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
-      }
-
-      .footer-left {
-        flex-direction: column;
-      }
-
-      .footer-contact {
-        text-align: center;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoltFace — L'ingénierie du Changement de Mobilité</title>
+    <!-- Utilisation de Font Awesome pour les icônes modernes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #0f172a; /* Slate 900 */
+            --navy: #1e3a5f; /* Blue 800 */
+            --teal: #0d9488; /* Teal 600 - Primary Action */
+            --teal-light: #14b8a6; /* Teal 500 */
+            --amber: #f59e0b; /* Amber 500 - Secondary Highlight */
+            --amber-light: #fbbf24; /* Amber 400 */
+            --cream: #f9fafb; /* White-ish background */
+            --gray-100: #f4f4f5; /* Zinc 100 */
+            --gray-600: #52525b; /* Zinc 600 */
+            --white: #ffffff;
+            --danger: #ef4444; /* Red 500 */
+            --success: #10b981; /* Green 500 */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--deep-blue);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HERO SECTION (HEADER) ========== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(165deg, var(--deep-blue) 0%, var(--navy) 50%, #1e4d5f 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 0;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse 80% 50% at 20% 40%, rgba(13, 148, 136, 0.2) 0%, transparent 50%),
+                        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(245, 158, 11, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .brand-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            margin-bottom: 50px;
+        }
+
+        .phrase-choc {
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px 40px;
+            margin-bottom: 50px;
+            max-width: 850px;
+        }
+
+        .phrase-choc-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--amber-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .phrase-choc-text {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.5;
+        }
+
+        .phrase-choc-text .strike {
+            color: var(--danger);
+            text-decoration-thickness: 3px;
+            text-decoration-color: var(--danger);
+        }
+
+        .hero-headline {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.8rem, 7vw, 4.5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 30px;
+            max-width: 1000px;
+        }
+
+        .hero-headline .highlight {
+            color: var(--teal-light);
+            text-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+        }
+
+        .hero-subheadline {
+            font-size: 1.35rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 700px;
+            margin-bottom: 60px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .transformation-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+
+        .transform-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 14px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            color: var(--white);
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .transform-pill:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .transform-pill .old {
+            color: rgba(255,255,255,0.6);
+            text-decoration: line-through;
+        }
+
+        .transform-pill .arrow {
+            color: var(--amber-light);
+            font-weight: 700;
+        }
+
+        .transform-pill .new {
+            color: var(--teal-light);
+            font-weight: 700;
+        }
+
+        .trust-bar {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .trust-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(255,255,255,0.5);
+            font-weight: 600;
+        }
+
+        .trust-logos {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .trust-item .icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* ========== SERVICES SECTION ========== */
+        .services {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--teal);
+            background: rgba(13, 148, 136, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3rem);
+            font-weight: 700;
+            color: var(--deep-blue);
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin-bottom: 70px;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: var(--gray-100);
+            border-radius: 30px;
+            padding: 45px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gray-100);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: rgba(13, 148, 136, 0.3);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--teal), var(--teal-light));
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Logo for GoDifferent */
+        .service-logo {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .service-logo img {
+            max-width: 180px; /* Max width for rectangular logo */
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .service-card.mobility .service-icon {
+            color: var(--teal);
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(20, 184, 166, 0.15));
+        }
+
+        .service-card.mobility .service-logo {
+            /* Placeholder for rectangular logo */
+            background: rgba(13, 148, 136, 0.1);
+            padding: 8px 15px;
+            border-radius: 10px;
+            width: fit-content;
+        }
+
+        .service-card.electric::before {
+            background: linear-gradient(90deg, var(--amber), var(--amber-light));
+        }
+        .service-card.electric .service-icon {
+            color: var(--amber);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.15));
+        }
+
+        .service-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin-bottom: 8px;
+        }
+
+        .service-tagline {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin-bottom: 35px;
+            font-style: italic;
+        }
+
+        .service-block {
+            margin-bottom: 25px;
+        }
+
+        .service-block-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gray-600);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .service-block.problem {
+            background: #fef2f2; /* Red 50 */
+            border-left: 4px solid var(--danger);
+            padding: 18px 25px;
+            border-radius: 0 16px 16px 0;
+            font-size: 0.95rem;
+            color: #991b1b; /* Red 800 */
+        }
+
+        .service-block.solution {
+            background: #f0fdfa; /* Teal 50 */
+            border-left: 4px solid var(--teal);
+            padding: 18px 25px;
+            border-radius: 0 16px 16px 0;
+            font-size: 0.95rem;
+            color: #042f2e; /* Teal 900 */
+        }
+        
+        .service-block strong {
+            font-weight: 600;
+        }
+
+        .service-deliverables {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .deliverable-tag {
+            background: var(--deep-blue);
+            color: var(--white);
+            padding: 9px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .deliverable-tag:hover {
+            background: var(--teal);
+        }
+
+        .service-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .status-text {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .status-text strong {
+            color: var(--deep-blue);
+        }
+
+        /* ========== VALUE PROP SECTION (The Why) ========== */
+        .value-prop {
+            padding: 120px 0;
+            background: var(--deep-blue);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .value-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            color: var(--amber-light);
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+        }
+
+        .value-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.3;
+            margin-bottom: 30px;
+        }
+
+        .value-title .accent {
+            color: var(--teal-light);
+        }
+
+        .value-text {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.9;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--teal), var(--teal-light));
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(13, 148, 136, 0.4);
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(90deg, var(--teal-light), var(--teal));
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(13, 148, 136, 0.6);
+        }
+
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: 60px 0;
+            background: var(--gray-100);
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--deep-blue);
+            color: var(--white);
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .footer-status {
+            font-size: 1rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+            max-width: 400px;
+        }
+
+        .footer-contact {
+            text-align: right;
+        }
+
+        .footer-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin-bottom: 4px;
+        }
+
+        .footer-company {
+            font-size: 1rem;
+            color: var(--teal);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .footer-email {
+            font-size: 1rem;
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-email:hover {
+            color: var(--teal);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+             .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero, .services, .value-prop, .footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .phrase-choc {
+                padding: 25px 25px;
+                margin-bottom: 40px;
+            }
+
+            .trust-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding-top: 30px;
+            }
+
+            .trust-logos {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-left {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .footer-contact {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      
-      <div class="brand">
-        <img src="https://raw.githubusercontent.com/bourgineo-stack/presentation-offre-mobilite/ff385b3ac61fb02ad3bcd3234c3ec5f913aa17af/voltface.jpg" alt="VoltFace" class="brand-logo">
-        <div class="brand-separator"></div>
-        <img src="https://raw.githubusercontent.com/bourgineo-stack/presentation-offre-mobilite/ff385b3ac61fb02ad3bcd3234c3ec5f913aa17af/logo1.jpg" alt="GoDifferent" class="brand-logo">
-      </div>
+    <!-- HERO / PROPOSITION D'OUVERTURE -->
+    <section class="hero">
+        <div class="container">
+            
+            <!-- Logo VoltFace seul -->
+            <img src="https://raw.githubusercontent.com/bourgineo-stack/presentation-offre-mobilite/ff385b3ac61fb02ad3bcd3234c3ec5f913aa17af/voltface.jpg" alt="Logo VoltFace" class="brand-logo">
 
-      <div class="phrase-choc">
-        <div class="phrase-choc-label">La phrase qu'on veut faire disparaître</div>
-        <p class="phrase-choc-text">
-          « Mes collaborateurs viennent en <span class="strike">voiture</span> <span class="strike">thermique</span>, <span class="strike">seuls</span>. »
-        </p>
-      </div>
+            <div class="phrase-choc">
+                <div class="phrase-choc-label"><i class="fa-solid fa-cloud-bolt"></i> Le constat qui bloque l'action</div>
+                <p class="phrase-choc-text">
+                    « Mon personnel vient encore en <span class="strike">voiture thermique</span>, <span class="strike">seul</span>, et ne voit pas d'alternative. »
+                </p>
+            </div>
 
-      <h1 class="hero-headline">
-        De la sensibilisation<br>
-        au <span class="highlight">passage à l'action</span>
-      </h1>
+            <h1 class="hero-headline">
+                Accélérer la <span class="highlight">Décarbonation des Trajets</span> <br>par l'Engagement Collectif
+            </h1>
 
-      <p class="hero-subheadline">
-        Ateliers collectifs pour transformer la mobilité de vos équipes. 
-        Fini les questionnaires froids et les rapports que personne ne lit.
-      </p>
+            <p class="hero-subheadline">
+                VoltFace ne propose pas un audit. Nous activons une ingénierie du changement pour transformer les contraintes (ZFE, LOM) en **leviers d'innovation sociale** et environnementale pour vos équipes.
+            </p>
 
-      <div class="transformation-row">
-        <div class="transform-pill">
-          <span class="old">voiture</span>
-          <span class="arrow">→</span>
-          <span class="new">vélo, train, marche</span>
+            <div class="transformation-row">
+                <div class="transform-pill">
+                    <span class="old">Carbone</span>
+                    <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                    <span class="new">Réduction CO₂</span>
+                </div>
+                <div class="transform-pill">
+                    <span class="old">Friction</span>
+                    <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                    <span class="new">Adhésion</span>
+                </div>
+                <div class="transform-pill">
+                    <span class="old">Audit</span>
+                    <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                    <span class="new">Action</span>
+                </div>
+            </div>
+
+            <div class="trust-bar">
+                <span class="trust-label">Nos références d'activation</span>
+                <div class="trust-logos">
+                    <div class="trust-item">
+                        <div class="icon"><i class="fa-solid fa-industry"></i></div>
+                        <span>Grand Compte Industriel<br><small style="opacity:0.7">1 500+ collaborateurs</small></span>
+                    </div>
+                    <div class="trust-item">
+                        <div class="icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <span>Chambre de Commerce<br><small style="opacity:0.7">Partenaire formation VE</small></span>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="transform-pill">
-          <span class="old">thermique</span>
-          <span class="arrow">→</span>
-          <span class="new">électrique</span>
+    </section>
+
+    <!-- SERVICES / NOS ATELIERS COHÉRENTS -->
+    <section class="services">
+        <div class="container">
+            
+            <span class="section-label">Nos interventions stratégiques</span>
+            <h2 class="section-title">Deux ateliers, un objectif : débloquer la transition concrètement</h2>
+            <p class="section-subtitle">
+                Nous intervenons sur les deux leviers majeurs du Plan de Mobilité Employeur (PDME) : le changement modal (passer du seul à plusieurs) et l'électrification (passer du thermique à l'électrique).
+            </p>
+
+            <div class="services-grid">
+                
+                <!-- ATELIER 1: GO DIFFERENT - CHANGEMENT MODAL (Logo Rectangulaire) -->
+                <div class="service-card mobility">
+                    <!-- Remplacement de l'icône par le logo rectangulaire GoDifferent -->
+                    <div class="service-logo">
+                        <img src="https://placehold.co/180x50/0d9488/ffffff?text=GoDifferent" alt="Logo GoDifferent">
+                    </div>
+                    
+                    <h3 class="service-name">GoDifferent : Atelier PDME Actif</h3>
+                    <p class="service-tagline">Transformer la contrainte réglementaire en dynamique collective.</p>
+                    
+                    <div class="service-block-label">Défi Habituel</div>
+                    <div class="service-block problem">
+                        Les questionnaires passifs génèrent un taux de réponse faible ($<15\%$) et un rapport théorique. Le PDME devient une **charge administrative** sans impact réel sur les habitudes de trajet.
+                    </div>
+                    
+                    <div class="service-block-label">Notre Solution - L'Expérience</div>
+                    <div class="service-block solution">
+                        Notre atelier **gamifié et géolocalisé** rassemble les collaborateurs pour co-construire des solutions. Nous utilisons la cartographie dynamique pour identifier les binômes de covoiturage et les **"champions"** de la mobilité douce en temps réel.
+                    </div>
+
+                    <div class="service-deliverables">
+                        <span class="deliverable-tag">Conformité LOM</span>
+                        <span class="deliverable-tag">Création de communautés (covoiturage, vélo)</span>
+                        <span class="deliverable-tag">Analyse et Bilan CO₂ détaillé</span>
+                        <span class="deliverable-tag">Plan d'action priorisé</span>
+                    </div>
+
+                    <div class="service-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Déploiement Pilote : **Grand Groupe Industriel (Janv. 2025)**</span>
+                    </div>
+                </div>
+
+                <!-- ATELIER 2: FORMATION ÉLECTRIQUE - CHANGEMENT ÉNERGÉTIQUE -->
+                <div class="service-card electric">
+                    <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3 class="service-name">Formation Mobilité Électrique</h3>
+                    <p class="service-tagline">Délivrer une expérience engageante pour lever les doutes sur le VE.</p>
+                    
+                    <div class="service-block-label">Défi Habituel</div>
+                    <div class="service-block problem">
+                        Les **freins psychologiques** (autonomie, coût, recharge) sont plus forts que les avantages. Le changement s'arrête au niveau du doute personnel, malgré les incitations de l'entreprise.
+                    </div>
+                    
+                    <div class="service-block-label">Notre Solution - L'Immersion</div>
+                    <div class="service-block solution">
+                        Un **Escape Game pédagogique** de 5 énigmes. Les collaborateurs apprennent les fondamentaux du Véhicule Électrique (VE) par l'action et la résolution de défis, transformant l'anxiété en **confiance opérationnelle**.
+                    </div>
+
+                    <div class="service-deliverables">
+                        <span class="deliverable-tag">Réduction des peurs irrationnelles</span>
+                        <span class="deliverable-tag">Maîtrise des écosystèmes de recharge</span>
+                        <span class="deliverable-tag">Guide d'aide à la décision VE</span>
+                        <span class="deliverable-tag">Taux d'adoption maximisé</span>
+                    </div>
+
+                    <div class="service-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Déjà en cours de déploiement : **Partenariat CCI**</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="transform-pill">
-          <span class="old">seul</span>
-          <span class="arrow">→</span>
-          <span class="new">à deux ou trois</span>
+    </section>
+
+    <!-- VALUE PROP (POURQUOI VOLTFACE EST L'UNIQUE CHOIX) -->
+    <section class="value-prop">
+        <div class="container value-container">
+            <div class="value-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <h2 class="value-title">
+                Nous ne vendons pas des ateliers. Nous vous offrons l'ingénierie nécessaire pour <span class="accent">Créer un Avantage Compétitif Durable.</span>
+            </h2>
+            <p class="value-text">
+                L'avenir n'appartient pas à ceux qui se contentent de cocher des cases. Il appartient à ceux qui mobilisent. En transformant la contrainte réglementaire en une **expérience d'équipe positive et engageante**, vous ne faites pas que réduire votre empreinte carbone.
+                <br><br>
+                Vous augmentez l'attractivité de votre marque employeur, vous créez du lien social fort entre vos équipes et vous générez une économie tangible. **Passez du devoir au mouvement.**
+            </p>
+            
+            <a href="mailto:volt.face@outlook.fr" class="cta-button">Engageons la discussion stratégique</a>
         </div>
-      </div>
+    </section>
 
-      <div class="trust-bar">
-        <span class="trust-label">Ils nous font confiance</span>
-        <div class="trust-logos">
-          <div class="trust-item">
-            <div class="icon">🏭</div>
-            <span>Groupe industriel<br><small style="opacity:0.7">1 500 salariés</small></span>
-          </div>
-          <div class="trust-item">
-            <div class="icon">🏛️</div>
-            <span>CCI locale<br><small style="opacity:0.7">Formation VE</small></span>
-          </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <!-- Remplacement du statut "80%" par une affirmation forte -->
+                <span class="footer-badge"><i class="fa-solid fa-handshake"></i> Partenariat Action</span>
+                <span class="footer-status">
+                    Notre offre est flexible et s'adapte à l'ADN de votre organisation. Contactez-nous pour un diagnostic rapide de vos besoins.
+                </span>
+            </div>
+            <div class="footer-contact">
+                <div class="footer-name">Olivier Bourgine</div>
+                <div class="footer-company">Fondateur VoltFace</div>
+                <a href="mailto:volt.face@outlook.fr" class="footer-email">volt.face@outlook.fr</a>
+            </div>
         </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services">
-    <div class="services-container">
-      
-      <span class="section-label">Nos interventions</span>
-      <h2 class="section-title">Deux leviers pour décarboner vos trajets</h2>
-      <p class="section-subtitle">
-        La réglementation impose d'agir. Nous apportons la méthode pour que ça fonctionne vraiment.
-      </p>
-
-      <div class="services-grid">
-        
-        <!-- MOBILITY -->
-        <div class="service-card mobility">
-          <div class="service-icon">🗺️</div>
-          <h3 class="service-name">GoDifferent</h3>
-          <p class="service-tagline">Atelier participatif — Plan de Mobilité Employeur</p>
-          
-          <div class="service-block problem">
-            Questionnaire en ligne → 15% de réponses → rapport que personne ne lit → rien ne change.
-          </div>
-          
-          <div class="service-block solution">
-            Atelier gamifié : géolocalisation, rencontres entre voisins, cartographie dynamique. Co-construction des solutions avec ceux qui ont déjà trouvé des alternatives.
-          </div>
-
-          <div class="service-deliverables">
-            <span class="deliverable-tag">Plan de Mobilité (LOM)</span>
-            <span class="deliverable-tag">Binômes covoiturage</span>
-            <span class="deliverable-tag">Bilan CO₂</span>
-          </div>
-
-          <div class="service-status">
-            <span class="status-dot"></span>
-            <span class="status-text">Pilote <strong>janvier 2025</strong> — 1 500 salariés</span>
-          </div>
-        </div>
-
-        <!-- ELECTRIC -->
-        <div class="service-card electric">
-          <div class="service-icon">⚡</div>
-          <h3 class="service-name">Formation Mobilité Électrique</h3>
-          <p class="service-tagline">Escape game pédagogique — Lever les freins au changement</p>
-          
-          <div class="service-block problem">
-            Freins psychologiques : autonomie, recharge, prix. Les collaborateurs n'osent pas franchir le pas.
-          </div>
-          
-          <div class="service-block solution">
-            Escape game + formation pratique. 5 énigmes = 5 leçons clés. Apprentissage par l'expérience, pas par slides.
-          </div>
-
-          <div class="service-deliverables">
-            <span class="deliverable-tag">Collaborateurs débloqués</span>
-            <span class="deliverable-tag">Guide pratique VE</span>
-            <span class="deliverable-tag">Aide au choix</span>
-          </div>
-
-          <div class="service-status">
-            <span class="status-dot"></span>
-            <span class="status-text">En déploiement — <strong>CCI locale</strong></span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- VALUE PROP -->
-  <section class="value-prop">
-    <div class="value-container">
-      <div class="value-icon">🔥</div>
-      <h2 class="value-title">
-        La réglementation crée l'obligation.<br>
-        <span class="accent">L'expérience collective crée le mouvement.</span>
-      </h2>
-      <p class="value-text">
-        Plan de Mobilité obligatoire. Fin du thermique en 2035. Les contraintes sont là.<br>
-        Mais une case cochée n'est pas une dynamique enclenchée.<br><br>
-        Nous transformons la contrainte réglementaire en opportunité de mobiliser vos équipes — et de faire bouger les lignes pour de vrai.
-      </p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-left">
-        <span class="footer-badge">Offres consolidées à 80%</span>
-        <span class="footer-status">Phase pilote avec partenaires locaux<br>Échangeons sur vos besoins</span>
-      </div>
-      <div class="footer-contact">
-        <div class="footer-name">Olivier Bourgine</div>
-        <div class="footer-company">VoltFace</div>
-        <div class="footer-email">volt.face@outlook.fr</div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
 </body>
 </html>
